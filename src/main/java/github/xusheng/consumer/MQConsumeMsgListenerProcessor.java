@@ -1,4 +1,4 @@
-package github.xusheng.listener;
+package github.xusheng.consumer;
 
 import com.alibaba.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import com.alibaba.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
@@ -19,14 +19,7 @@ import java.util.List;
 @Slf4j
 @Component
 public class MQConsumeMsgListenerProcessor implements MessageListenerConcurrently {
-    /**
-     * It is not recommend to throw exception,rather than returning ConsumeConcurrentlyStatus.RECONSUME_LATER if consumption failure
-     *
-     * @param msgs    msgs.size() >= 1<br>
-     *                DefaultMQPushConsumer.consumeMessageBatchMaxSize=1，you can modify here
-     * @param context
-     * @return
-     */
+
     @Override
     public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
         if (CollectionUtils.isEmpty(msgs)) {
